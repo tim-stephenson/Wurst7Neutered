@@ -8,7 +8,9 @@
 package net.wurstclient.command;
 
 import java.lang.reflect.Field;
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.TreeMap;
 
 import net.minecraft.util.crash.CrashException;
@@ -72,6 +74,9 @@ public final class CmdList
 	private final TreeMap<String, Command> cmds =
 		new TreeMap<>(String::compareToIgnoreCase);
 	
+	private final HashSet<String> allowedCommands = new HashSet<String>(Arrays.asList("addalt", "bind", "binds", "blocklist", "dig", "drop", "enabledhax", "excavate", "features", "follow", "friends", "getpos", "goto", "help", "ip", "itemlist", "jump", "leave", "path", "say", "setblock", "setcheckbox", "setcolor", "setmode", "setslider", "settings", "sv", "t", "toomanyhax", "unbind", "viewnbt"));
+
+	
 	public CmdList()
 	{
 		try
@@ -82,7 +87,8 @@ public final class CmdList
 					continue;
 				
 				Command cmd = (Command)field.get(this);
-				cmds.put(cmd.getName(), cmd);
+				if(this.allowedCommands.contains(cmd.getName()))
+					cmds.put(cmd.getName(), cmd);
 			}
 			
 		}catch(Exception e)
