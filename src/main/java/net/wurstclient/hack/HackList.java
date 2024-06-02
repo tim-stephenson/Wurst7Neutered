@@ -197,8 +197,14 @@ public final class HackList implements UpdateListener
 	private final EventManager eventManager =
 		WurstClient.INSTANCE.getEventManager();
 	
-	private final HashSet<String> allowedHacks = new HashSet<String>(Arrays.asList("AntiBlind", "AntiWobble", "AutoBuild", "AutoDrop", "AutoFish", "AutoLibrarian", "AutoMine", "AutoTool", "BoatFly", "Excavator", "FastPlace", "Freecam", "Fullbright", "InvWalk", "ItemESP", "MobSpawnESP", "NameTags", "NewChunks", "NoBackground", "NoFireOverlay", "NoFog", "NoPumpkin", "NoShieldOverlay", "PortalGUI", "Radar", "Restock", "SafeWalk", "ScaffoldWalk", "TooManyHax", "Tunneller"));
-	
+	private final HashSet<String> allowedHacks =
+		new HashSet<String>(Arrays.asList("AntiBlind", "AntiWobble",
+			"AutoBuild", "AutoDrop", "AutoFish", "AutoLibrarian", "AutoMine",
+			"AutoTool", "BoatFly", "Excavator", "FastPlace", "Freecam",
+			"Fullbright", "InvWalk", "ItemESP", "MobSpawnESP", "NameTags",
+			"Navigator", "NewChunks", "NoBackground", "NoFireOverlay", "NoFog",
+			"NoPumpkin", "NoShieldOverlay", "PortalGUI", "Radar", "Restock",
+			"SafeWalk", "ScaffoldWalk", "TooManyHax", "Tunneller"));
 	
 	public HackList(Path enabledHacksFile)
 	{

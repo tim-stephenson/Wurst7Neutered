@@ -74,8 +74,13 @@ public final class CmdList
 	private final TreeMap<String, Command> cmds =
 		new TreeMap<>(String::compareToIgnoreCase);
 	
-	private final HashSet<String> allowedCommands = new HashSet<String>(Arrays.asList("addalt", "bind", "binds", "blocklist", "dig", "drop", "enabledhax", "excavate", "features", "follow", "friends", "getpos", "goto", "help", "ip", "itemlist", "jump", "leave", "path", "say", "setblock", "setcheckbox", "setcolor", "setmode", "setslider", "settings", "sv", "t", "toomanyhax", "unbind", "viewnbt"));
-
+	private final HashSet<String> allowedCommands =
+		new HashSet<String>(Arrays.asList(".addalt", ".bind", ".binds",
+			".blocklist", ".dig", ".drop", "enabledhax", ".excavate",
+			".features", ".follow", ".friends", ".getpos", ".goto", ".help",
+			".ip", ".itemlist", ".jump", ".leave", ".path", ".say", ".setblock",
+			".setcheckbox", ".setcolor", ".setmode", ".setslider", ".settings",
+			".sv", ".t", ".toomanyhax", ".unbind", ".viewnbt"));
 	
 	public CmdList()
 	{
