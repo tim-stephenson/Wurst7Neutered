@@ -12,8 +12,10 @@ import java.lang.reflect.Field;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.TreeMap;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -195,6 +197,15 @@ public final class HackList implements UpdateListener
 	private final EventManager eventManager =
 		WurstClient.INSTANCE.getEventManager();
 	
+	private final HashSet<String> allowedHacks =
+		new HashSet<String>(Arrays.asList("AntiBlind", "AntiWobble",
+			"AutoBuild", "AutoDrop", "AutoFish", "AutoLibrarian", "AutoMine",
+			"AutoTool", "BoatFly", "Excavator", "FastPlace", "Freecam",
+			"Fullbright", "InvWalk", "ItemESP", "MobSpawnESP", "NameTags",
+			"Navigator", "NewChunks", "NoBackground", "NoFireOverlay", "NoFog",
+			"NoPumpkin", "NoShieldOverlay", "PortalGUI", "Radar", "Restock",
+			"SafeWalk", "ScaffoldWalk", "TooManyHax", "Tunneller"));
+	
 	public HackList(Path enabledHacksFile)
 	{
 		this.enabledHacksFile = new EnabledHacksFile(enabledHacksFile);
@@ -207,7 +218,8 @@ public final class HackList implements UpdateListener
 					continue;
 				
 				Hack hack = (Hack)field.get(this);
-				hax.put(hack.getName(), hack);
+				if(this.allowedHacks.contains(hack.getName()))
+					hax.put(hack.getName(), hack);
 			}
 			
 		}catch(Exception e)
